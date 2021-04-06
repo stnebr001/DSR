@@ -3,8 +3,7 @@ import pandas as pd
 
 # reading in data
 # the first row is the title of the table and needs to be removed
-data = pd.read_excel(r"C:\Users\IC\Desktop\DSR\pone.0212445.s004.xlsx", 
-                     sheetname = "estimates", skiprows = [0])
+data = pd.read_excel(r"C:\Users\IC\Desktop\DSR\pone.0212445.s004.xlsx",sheetname = "estimates",skiprows = [0])
 print(data) # checking if data has been read in
 
 ## What is the total number of people living with HIV (NoPLHIV) in the listed districts according to the Survey estimate?
@@ -74,7 +73,7 @@ def keyPLHIV(data,keywords,estimate): # creating a function
 keyPLHIV(data,["city","metro"],"Survey") # answer
 
 ## Write the original data (without the caption - originally row 1) with the extra columns as comma-separated values (CSV) to a new .csv file
-data.to_csv(r"C:\Users\IC\Desktop\DSR\new.pone.0212445.s004.csv", index = False)
+data.to_csv(r"C:\Users\IC\Desktop\DSR\new.pone.0212445.s004.csv",index = False)
 
 
 
