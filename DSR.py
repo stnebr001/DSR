@@ -3,7 +3,7 @@ import pandas as pd
 
 # reading in data
 # the first row is the title of the table and needs to be removed
-data = pd.read_excel(r"C:\Users\IC\Desktop\New folder (2)\pone.0212445.s004.xlsx", 
+data = pd.read_excel(r"C:\Users\IC\Desktop\DSR\pone.0212445.s004.xlsx", 
                      sheetname = "estimates", skiprows = [0])
 print(data) # checking if data has been read in
 
@@ -39,7 +39,8 @@ print(meanPLHIV(data,"NoPLHIV_UCL",ind)) # upper bound
 
 ## Add a column and populate it with the number of people not living with HIV for each row
 
-data["NoPNLHIV"] = data["NoPLHIV"] * 100 / data["Prevalence_%"] # NoPNLHIV = Number of People Not Living with HIV
+data["NoPL"] = data["NoPLHIV"] * 100 / data["Prevalence_%"] # # number of people living in the district based on HIV prevalence
+data["NoPNLHIV"] = data["NoPL"] * (100 - data["Prevalence_%"]) / 100 # NoPNLHIV = Number of People Not Living with HIV
 print(data) 
 
 ## What is the total NoPLHIV in all the cities (districts with the word “city” or “metro” in the name)?
@@ -73,7 +74,7 @@ def keyPLHIV(data,keywords,estimate): # creating a function
 keyPLHIV(data,["city","metro"],"Survey") # answer
 
 ## Write the original data (without the caption - originally row 1) with the extra columns as comma-separated values (CSV) to a new .csv file
-data.to_csv(r"C:\Users\IC\Desktop\New folder (2)\new.pone.0212445.s004.csv", index = False)
+data.to_csv(r"C:\Users\IC\Desktop\DSR\new.pone.0212445.s004.csv", index = False)
 
 
 
